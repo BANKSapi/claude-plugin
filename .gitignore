@@ -1,0 +1,5 @@
+# The directory blocks these system files inside the plugin folder
+.DS_Store
+Thumbs.db
+desktop.ini
+__MACOSX/

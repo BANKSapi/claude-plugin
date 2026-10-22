@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "banksapi-docs": {
+      "type": "http",
+      "url": "https://banksapi.io/docs-mcp"
+    }
+  }
+}

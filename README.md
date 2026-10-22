@@ -36,10 +36,16 @@ In Claude Code you can also call the skills directly with `/banksapi:integrate` 
 
 ## Data
 
-The plugin connects to one server: `https://banksapi.io/docs-mcp`, the public BANKSapi
-documentation server, operated by BANKSapi. It sends that server the search queries, docs page
-paths and OpenAPI operation names that you or Claude ask for, and nothing else. The server needs
-no account and no sign-in.
+The plugin reads public BANKSapi documentation from two places, both operated by BANKSapi:
+
+- `https://banksapi.io/docs-mcp`, the documentation connector. It receives the search queries,
+  docs page paths and OpenAPI operation names that you or Claude ask for, and nothing else
+- `https://docs.banksapi.de`, the documentation website. If the connector isn't connected yet,
+  the skills tell Claude to read the same pages there directly, such as
+  `https://docs.banksapi.de/llms.txt`. These are plain requests for public pages
+
+Neither needs an account or a sign-in. The documentation is the authority: where it and a skill
+differ, the skills tell Claude to follow the documentation.
 
 The plugin doesn't access bank accounts or customer data, doesn't send or ask for API
 credentials, runs no local code and stores nothing.
@@ -51,7 +57,7 @@ credentials from your own configuration. The plugin never handles those credenti
 
 To run code that calls the BANKSapi API, you need API credentials from BANKSapi. Request a free
 trial at [banksapi.de/en/free-trial](https://banksapi.de/en/free-trial/). The Demo Provider and
-the no-code [ATLAS](https://banksapi.io/atlas) interface let you try the whole flow before you
+the no-code [ATLAS](https://banksapi.io/atlas/) interface let you try the whole flow before you
 connect a real bank.
 
 ## Support

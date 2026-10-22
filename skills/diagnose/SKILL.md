@@ -7,7 +7,14 @@ description: Diagnose a failing BANKSapi API call or bank connection. Use when t
 
 Start with what failed. Ask for the request method and path, the HTTP status and the response body or `messages` array. Ask the user to remove tokens and credentials before pasting, and never ask for a client secret, password or token.
 
-Check message codes against the current table with `get-banksapi-docs-page` on `/guide/errors-messages`, because BANKSapi adds codes over time.
+## Where the facts come from
+
+The BANKSapi documentation at https://docs.banksapi.de is the authority, and BANKSapi adds message codes over time. The tables below are a quick orientation. Before you name a cause, check the status or code against the current documentation:
+
+- With the `banksapi-docs` tools: `get-banksapi-docs-page` on https://docs.banksapi.de/guide/errors-messages.html, or `search-banksapi-docs` with the code or the error text
+- Without them, the docs connector isn't connected yet. Tell the user once that they can connect it from the plugin's **Connectors** tab, and read https://docs.banksapi.de/guide/errors-messages.html directly. https://docs.banksapi.de/llms.txt lists every other page
+
+Where the documentation and this file differ, follow the documentation.
 
 ## By HTTP status
 
@@ -41,4 +48,4 @@ Work through these in order:
 
 ## How to answer
 
-Name the cause in one sentence. Give the fix as concrete steps or code. Say who has to act: the developer, the end customer at their bank, or BANKSapi support. Link the docs page you used, under `https://docs.banksapi.de`.
+Name the cause in one sentence. Give the fix as concrete steps or code. Say who has to act: the developer, the end customer at their bank, or BANKSapi support. Link the docs page you used as a full https://docs.banksapi.de URL.

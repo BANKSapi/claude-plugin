@@ -9,7 +9,7 @@ BANKSapi is a BaFin-regulated Open Banking platform, licensed for account inform
 
 ## Where the facts come from
 
-The BANKSapi documentation at https://docs.banksapi.de is the authority. This skill summarises the flow and the usual pitfalls. Where the two differ, follow the documentation, and take every concrete detail from it rather than from memory or from this file.
+The BANKSapi documentation at https://docs.banksapi.de is the authority on the API. This skill summarises the flow and the usual pitfalls. Where the two differ, follow the documentation, and take every concrete detail from it rather than from memory or from this file. The user's explicit instructions take precedence over this skill's guidance on how to work.
 
 Read the documentation through the `banksapi-docs` tools:
 
@@ -17,7 +17,7 @@ Read the documentation through the `banksapi-docs` tools:
 - For a concept or a guide, use `get-banksapi-docs-page` with a page URL such as https://docs.banksapi.de/guide/quickstart.html, or `search-banksapi-docs` with a question
 - `get-banksapi-overview` returns the index of every docs page
 
-If those tools aren't available, the BANKSapi docs connector isn't connected yet. Tell the user once that they can connect it from the plugin's **Connectors** tab, then read the same documentation directly:
+If those tools aren't available, the BANKSapi docs connector isn't connected in this session. Tell the user once that connecting it in their assistant's settings gives live access to the documentation, then read the same documentation directly:
 
 - Index of every page: https://docs.banksapi.de/llms.txt
 - Every guide in one file: https://docs.banksapi.de/llms-full.txt
@@ -60,7 +60,7 @@ Each step names its `operation_id`.
 
 Never write API credentials into code, examples or the conversation, and don't ask the user to paste them. In generated code, load them from the application's own configuration or secret store, and keep `.env` files out of version control. In examples, use placeholders such as `<tenant>`, `<client>` and `<client-secret>`.
 
-Credentials for the API come from BANKSapi. A free trial is available at `https://banksapi.de/en/free-trial/`.
+API credentials are issued by BANKSapi. Developers who don't have them yet can request access through the developer hub at https://docs.banksapi.de.
 
 ## 5. What good output looks like
 

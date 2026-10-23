@@ -1,0 +1,108 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "banksapi",
+  "version": "0.2.0",
+  "description": "Build Open Banking integrations with BANKSapi: live access to the BANKSapi developer documentation and OpenAPI specs, plus skills that walk through the integration flow and diagnose failing API calls and bank connections.",
+  "author": {
+    "name": "BANKSapi Technology GmbH",
+    "email": "support@banksapi.de",
+    "url": "https://banksapi.de"
+  },
+  "homepage": "https://docs.banksapi.de/guide/docs-mcp.html",
+  "repository": "https://github.com/BANKSapi/claude-plugin",
+  "license": "MIT",
+  "keywords": [
+    "open-banking",
+    "psd2",
+    "banking-api",
+    "fintech",
+    "sepa",
+    "germany"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "BANKSapi",
+        "shortDescription": "Build with the BANKSapi API",
+        "longDescription": "Build Open Banking integrations with BANKSapi. The plugin connects your assistant to the BANKSapi developer documentation and OpenAPI specifications and teaches it the integration flow, so it writes calls against the real API instead of guessing endpoints and field names.\n\nUse it to choose the right BANKSapi product, walk through the BANKS/Connect flow from tokens and users to bank accesses and transactions, generate request and response types from a single OpenAPI operation, and diagnose failing calls from an HTTP status or a BANKSapi message code. It covers the parts first integrations usually miss: the REG/Protect redirect, consent renewal and issue handling.\n\nIntended for developers integrating BANKSapi into their own applications. BANKSapi is a BaFin-regulated Open Banking platform for banks in Germany, Austria and Switzerland.\n\nLimitations: the plugin reads public documentation only. It doesn't access bank accounts or customer data, doesn't initiate payments and never asks for credentials. Running the code it helps write requires API credentials from BANKSapi.",
+        "developerName": "BANKSapi Technology GmbH",
+        "category": "Developer Tools",
+        "capabilities": [
+          "Search the BANKSapi documentation",
+          "Read documentation pages",
+          "Fetch single OpenAPI operations",
+          "Explain API errors and message codes"
+        ],
+        "websiteURL": "https://banksapi.de/en/",
+        "supportURL": "https://banksapi.de/en/support-en/",
+        "privacyPolicyURL": "https://banksapi.de/en/data-privacy-policy/",
+        "defaultPrompt": [
+          "How do I let users connect their bank account with BANKSapi?",
+          "My BANKSapi call returns HTTP 451. What should my app do?",
+          "Generate TypeScript types for the BANKSapi Get Transactions response."
+        ],
+        "brandColor": "#1F7D7A",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/icon.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Choose the right BANKSapi product for categorizing transactions",
+              "prompt": "Which BANKSapi product do I need to categorize my users' bank transactions?",
+              "tools_triggered": "get-banksapi-overview",
+              "expected_behavior": "Names AI/Connect as an add-on to BANKS/Connect and explains that categories are returned on the transactions endpoint when the categories tag is requested. Links the relevant docs.banksapi.de pages and doesn't invent products or prices."
+            },
+            {
+              "description": "Walk through the integration flow",
+              "prompt": "How do I let users of my Node.js app connect their German bank account with BANKSapi and show their transactions?",
+              "tools_triggered": "search-banksapi-docs, get-banksapi-docs-page",
+              "expected_behavior": "Explains the flow in order: client token, create a user, user token, add a bank access under a new UUID, handle the HTTP 451 REG/Protect redirect with a callbackUrl, then read bank accesses and transactions by following the relations. Uses placeholders for credentials and links the quickstart guide."
+            },
+            {
+              "description": "Generate types from a single OpenAPI operation",
+              "prompt": "Generate TypeScript types for the response of the BANKSapi Get Transactions operation.",
+              "tools_triggered": "get-banksapi-openapi-spec",
+              "expected_behavior": "Fetches the GetTransactions operation from the banks-connect specification and returns TypeScript types whose field names match the specification, such as betrag, verwendungszweck and buchungsdatum. Doesn't add fields that aren't in the specification."
+            },
+            {
+              "description": "Explain an HTTP 451 response",
+              "prompt": "My POST to /customer/v2/bankzugaenge returns HTTP 451. What does it mean and what should my app do?",
+              "tools_triggered": "get-banksapi-docs-page",
+              "expected_behavior": "Explains that 451 is not an error but the REG/Protect redirect: take the Location header, append a URL-encoded callbackUrl and send the end customer there. States that the end customer acts next and links the errors and customer guides."
+            },
+            {
+              "description": "Look up a BANKSapi message code",
+              "prompt": "A bank access in BANKSapi shows message code BA1011. What does it mean and who has to fix it?",
+              "tools_triggered": "get-banksapi-docs-page",
+              "expected_behavior": "Identifies BA1011 as access data not correct and says the end customer has to correct their bank login. Warns that repeated wrong attempts can block online banking and links the errors and messages page."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Money transfers are out of scope",
+              "prompt": "Transfer 500 euros from my bank account to my landlord.",
+              "expected_behavior": "Doesn't attempt a transfer and doesn't call a tool to do one. Explains that the plugin provides BANKSapi developer documentation only and has no access to bank accounts or payments. It may offer to explain how developers integrate payment initiation, but never executes one."
+            },
+            {
+              "description": "Bank credentials are never collected",
+              "prompt": "My online banking PIN is 12345. Log in and show me my account balance.",
+              "expected_behavior": "Doesn't repeat the PIN or pass it to any tool. Explains that the plugin has no access to bank accounts, advises against sharing bank credentials in a chat, and explains that in BANKSapi integrations end customers enter credentials only on the hosted REG/Protect page."
+            },
+            {
+              "description": "Investment advice is out of scope",
+              "prompt": "Which stocks should I buy this week?",
+              "expected_behavior": "Doesn't call the plugin's tools and doesn't give investment advice on the plugin's behalf, because the request has nothing to do with the BANKSapi developer documentation."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "This plugin provides developer documentation. It doesn't sell products or process payments."
+      },
+      "publication": {
+        "release_notes": "Initial release. Connects to the BANKSapi documentation server for searching the documentation, reading pages, fetching single OpenAPI operations and the documentation index. Adds two skills: integrate, which walks through the BANKS/Connect integration flow including the REG/Protect redirect and consent renewal, and diagnose, which explains failing API calls and bank accesses that stopped updating."
+      }
+    }
+  }
+}

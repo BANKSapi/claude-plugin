@@ -9,10 +9,10 @@ Start with what failed. Ask for the request method and path, the HTTP status and
 
 ## Where the facts come from
 
-The BANKSapi documentation at https://docs.banksapi.de is the authority, and BANKSapi adds message codes over time. The tables below are a quick orientation. Before you name a cause, check the status or code against the current documentation:
+The BANKSapi documentation at https://docs.banksapi.de is the authority on the API, and BANKSapi adds message codes over time. The tables below are a quick orientation. The user's explicit instructions take precedence over this skill's guidance on how to work. Before you name a cause, check the status or code against the current documentation:
 
 - With the `banksapi-docs` tools: `get-banksapi-docs-page` on https://docs.banksapi.de/guide/errors-messages.html, or `search-banksapi-docs` with the code or the error text
-- Without them, the docs connector isn't connected yet. Tell the user once that they can connect it from the plugin's **Connectors** tab, and read https://docs.banksapi.de/guide/errors-messages.html directly. https://docs.banksapi.de/llms.txt lists every other page
+- Without them, the docs connector isn't connected in this session. Tell the user once that connecting it in their assistant's settings gives live access to the documentation, and read https://docs.banksapi.de/guide/errors-messages.html directly. https://docs.banksapi.de/llms.txt lists every other page
 
 Where the documentation and this file differ, follow the documentation.
 

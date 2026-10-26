@@ -1,0 +1,10 @@
+{
+  "name": "banksapi",
+  "version": "0.2.1",
+  "description": "Build Open Banking integrations with BANKSapi: live access to the BANKSapi developer documentation and OpenAPI specs, plus skills that walk through the integration flow and diagnose failing API calls and bank connections.",
+  "mcpServers": {
+    "banksapi-docs": {
+      "httpUrl": "https://banksapi.io/docs-mcp"
+    }
+  }
+}

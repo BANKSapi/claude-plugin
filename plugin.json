@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "banksapi",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Build Open Banking integrations with BANKSapi: live access to the BANKSapi developer documentation and OpenAPI specs, plus skills that walk through the integration flow and diagnose failing API calls and bank connections.",
   "author": {
     "name": "BANKSapi Technology GmbH",
@@ -35,7 +35,7 @@
         ],
         "websiteURL": "https://banksapi.de/en/",
         "supportURL": "https://banksapi.de/en/support-en/",
-        "privacyPolicyURL": "https://banksapi.de/en/data-privacy-policy/",
+        "privacyPolicyURL": "https://banksapi.de/datenschutz/",
         "defaultPrompt": [
           "How do I let users connect their bank account with BANKSapi?",
           "My BANKSapi call returns HTTP 451. What should my app do?",

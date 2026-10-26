@@ -1,14 +1,14 @@
 {
   "name": "banksapi",
   "displayName": "BANKSapi",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Build Open Banking integrations with BANKSapi: live access to the BANKSapi developer documentation and OpenAPI specs, plus skills that walk through the integration flow and diagnose failing API calls and bank connections.",
   "author": {
     "name": "BANKSapi Technology GmbH",
     "url": "https://banksapi.de"
   },
   "homepage": "https://docs.banksapi.de/guide/docs-mcp.html",
-  "privacyPolicyUrl": "https://banksapi.de/en/data-privacy-policy/",
+  "privacyPolicyUrl": "https://banksapi.de/datenschutz/",
   "repository": "https://github.com/BANKSapi/claude-plugin",
   "license": "MIT",
   "keywords": [

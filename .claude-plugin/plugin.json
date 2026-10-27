@@ -8,6 +8,7 @@
     "url": "https://banksapi.de"
   },
   "homepage": "https://docs.banksapi.de/guide/docs-mcp.html",
+  "documentationUrl": "https://docs.banksapi.de/guide/docs-mcp.html",
   "privacyPolicyUrl": "https://banksapi.de/datenschutz/",
   "repository": "https://github.com/BANKSapi/claude-plugin",
   "license": "MIT",

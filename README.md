@@ -21,8 +21,14 @@ Switzerland.
   the HTTP status or BANKSapi message code, and says who has to act: the developer, the end
   customer at their bank, or BANKSapi support
 
-The plugin works in Claude and in ChatGPT and Codex. It contains only skills and the remote
-connector, so it behaves the same everywhere it is installed.
+The plugin works in Claude, in ChatGPT and Codex, and in Gemini CLI. It contains only skills
+and the remote connector, so it behaves the same everywhere it is installed.
+
+In Gemini CLI, install it with:
+
+```bash
+gemini extensions install https://github.com/BANKSapi/claude-plugin
+```
 
 ## Use it
 
@@ -73,7 +79,7 @@ whole flow before you connect a real bank.
 - Documentation: [docs.banksapi.de](https://docs.banksapi.de)
 - Support: [banksapi.de/en/support-en](https://banksapi.de/en/support-en/)
 - Email: support@banksapi.de
-- Privacy policy: [banksapi.de/en/data-privacy-policy](https://banksapi.de/en/data-privacy-policy/)
+- Privacy policy (German): [banksapi.de/datenschutz](https://banksapi.de/datenschutz/)
 
 ## License
 
